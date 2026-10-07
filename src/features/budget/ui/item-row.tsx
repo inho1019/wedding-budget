@@ -3,6 +3,7 @@ import { AmountInput } from "@/shared/ui/amount-input";
 import { EditableText } from "@/shared/ui/editable-text";
 import { RatioSlider } from "@/shared/ui/ratio-slider";
 import { useConfirm } from "@/shared/ui/modal";
+import { useToast } from "@/shared/ui/toast";
 
 interface ItemRowProps {
   item: Item;
@@ -23,6 +24,7 @@ export const ItemRow = ({
   onDelete,
 }: ItemRowProps) => {
   const { confirm } = useConfirm();
+  const { toast } = useToast();
 
   const handleDelete = () => {
     confirm({
@@ -32,13 +34,16 @@ export const ItemRow = ({
       cancelText: "취소",
       danger: true,
     }).then((ok) => {
-      if (ok) onDelete();
+      if (ok) {
+        onDelete();
+        toast(`'${item.name}' 항목을 삭제했어요`);
+      }
     });
   };
 
   return (
     <tr className="border-t border-slate-100 hover:bg-amber-50/40 transition-colors">
-      <td className="px-1 py-1.5 align-middle min-w-0 w-full whitespace-normal break-words">
+      <td className="px-1 py-1.5 align-middle min-w-0 w-fit whitespace-normal break-words">
         <EditableText
           value={item.name}
           onChange={onRename}

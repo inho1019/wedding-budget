@@ -2,19 +2,23 @@ import { useEffect, useState } from 'react'
 import { useBudgetStore } from '@/features/budget/model/budget-store'
 import { decodeFromHash, readFromSessionCookie, saveToSessionCookie } from '@/features/budget/model/budget-storage'
 import { ConfirmProvider, useConfirm } from '@/shared/ui/modal'
+import { ToastProvider, useToast } from '@/shared/ui/toast'
 import { BudgetPage } from '@/pages/budget-page'
 import { encodeBudget } from '@/features/budget/model/budget-storage'
 
 // 앱 프로바이더: 상태 동기화 + 공유 링크 확인 + 페이지 렌더링
 export const Providers = () => (
-  <ConfirmProvider>
-    <ProvidersInner />
-  </ConfirmProvider>
+  <ToastProvider>
+    <ConfirmProvider>
+      <ProvidersInner />
+    </ConfirmProvider>
+  </ToastProvider>
 )
 
 const ProvidersInner = () => {
   const budget = useBudgetStore((state) => state.budget)
   const { confirm, Dialog } = useConfirm()
+  const { toast } = useToast()
   const { load } = useBudgetStore((s) => s.actions)
   const [resolved, setResolved] = useState(false)
 
@@ -52,6 +56,7 @@ const ProvidersInner = () => {
     }).then((accepted) => {
       // 확인 → 공유 데이터 유지(이미 로드됨), 취소 → 저장된 데이터 복원
       load(accepted ? fromHash : fromCookie)
+      toast(accepted ? '공유된 데이터로 변경했어요' : '저장된 데이터를 유지했어요')
       setResolved(true)
     })
   }, [])

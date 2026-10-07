@@ -14,6 +14,15 @@ export default {
           300: '#c4c7ce',
         },
       },
+      animation: {
+        'toast-in': 'toast-in 200ms ease-out',
+      },
+      keyframes: {
+        'toast-in': {
+          '0%': { opacity: '0', transform: 'translateY(12px) scale(0.96)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+      },
     },
   },
   plugins: [],

@@ -11,6 +11,7 @@ import { ItemRow } from "@/features/budget/ui/item-row";
 import { EditableText } from "@/shared/ui/editable-text";
 import { ChevronDownIcon, PlusIcon } from "@/shared/ui/icons";
 import { useConfirm } from "@/shared/ui/modal";
+import { useToast } from "@/shared/ui/toast";
 
 interface SubCategoryProps {
   major: MajorCategory;
@@ -21,6 +22,7 @@ interface SubCategoryProps {
 export const SubCategory = ({ major, sub }: SubCategoryProps) => {
   const { actions } = useBudgetStore();
   const { confirm } = useConfirm();
+  const { toast } = useToast();
   const totals = subTotals(sub);
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
@@ -36,7 +38,10 @@ export const SubCategory = ({ major, sub }: SubCategoryProps) => {
       cancelText: "취소",
       danger: true,
     }).then((ok) => {
-      if (ok) actions.deleteSub(major.id, sub.id);
+      if (ok) {
+        actions.deleteSub(major.id, sub.id);
+        toast(`'${sub.name}' 구분을 삭제했어요`);
+      }
     });
   };
 
@@ -66,6 +71,7 @@ export const SubCategory = ({ major, sub }: SubCategoryProps) => {
                     event.stopPropagation();
                     if (detailsRef.current) detailsRef.current.open = true;
                     actions.addItem(major.id, sub.id);
+                    toast("항목을 추가했어요");
                   }}
                   className="btn-amber text-xs px-2 py-1 opacity-70 hover:opacity-100 cursor-pointer whitespace-nowrap"
                   aria-label="세부 항목 추가"

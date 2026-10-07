@@ -5,6 +5,7 @@ import { SubCategory } from "@/features/budget/ui/sub-category";
 import { EditableText } from "@/shared/ui/editable-text";
 import { PlusIcon } from "@/shared/ui/icons";
 import { useConfirm } from "@/shared/ui/modal";
+import { useToast } from "@/shared/ui/toast";
 
 interface MajorCategoryProps {
   major: MajorCategoryModel;
@@ -14,6 +15,7 @@ interface MajorCategoryProps {
 export const MajorCategory = ({ major }: MajorCategoryProps) => {
   const { actions } = useBudgetStore();
   const { confirm } = useConfirm();
+  const { toast } = useToast();
   const totals = majorTotals(major);
 
   const handleDelete = () => {
@@ -24,7 +26,10 @@ export const MajorCategory = ({ major }: MajorCategoryProps) => {
       cancelText: "취소",
       danger: true,
     }).then((ok) => {
-      if (ok) actions.deleteMajor(major.id);
+      if (ok) {
+        actions.deleteMajor(major.id);
+        toast(`'${major.name}' 카테고리를 삭제했어요`);
+      }
     });
   };
 
@@ -54,7 +59,10 @@ export const MajorCategory = ({ major }: MajorCategoryProps) => {
           <div className="flex items-center gap-1">
             <button
               type="button"
-              onClick={() => actions.addSub(major.id)}
+              onClick={() => {
+                actions.addSub(major.id);
+                toast("구분을 추가했어요");
+              }}
               className="btn-amber text-xs px-2 py-1 cursor-pointer"
               title="구분 추가"
             >
@@ -78,7 +86,7 @@ export const MajorCategory = ({ major }: MajorCategoryProps) => {
         <thead>
           <tr className="text-sm font-medium text-ink-300 border-b border-slate-100">
             <th className="px-3 py-2 text-left font-medium min-w-0">항목</th>
-            <th className="hidden md:table-cell py-2 md:w-52 text-left">
+            <th className="sr-only md:not-sr-only py-2 md:w-52 text-left">
               <div className="flex items-center justify-between gap-2 text-sm font-medium">
                 <span>신랑</span>
                 <span>신부</span>

@@ -38,7 +38,7 @@ export const ItemRow = ({
 
   return (
     <tr className="border-t border-slate-100 hover:bg-amber-50/40 transition-colors">
-      <td className="px-1 py-1 align-middle min-w-0 max-w-[45%] whitespace-normal break-words">
+      <td className="px-1 py-1.5 align-middle min-w-0 w-full whitespace-normal break-words">
         <EditableText
           value={item.name}
           onChange={onRename}

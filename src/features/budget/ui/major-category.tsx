@@ -42,22 +42,13 @@ export const MajorCategory = ({ major }: MajorCategoryProps) => {
           />
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-end gap-3 text-right shrink-0">
-            <div>
-              <div className="text-[10px] font-medium text-ink-300">
-                모은 돈 합계
-              </div>
-              <div className="text-sm font-semibold text-slate-500 tabular-nums">
-                {totals.saved.toLocaleString("en-US")}
-              </div>
+          <div className="flex items-center text-right shrink-0 flex-col md:flex-row">
+            <div className="text-sm font-bold text-slate-500 backdrop:tabular-nums">
+              {totals.saved.toLocaleString("en-US")}
             </div>
-            <div>
-              <div className="text-[10px] font-medium text-ink-300">
-                목보액 합계
-              </div>
-              <div className="text-sm font-bold text-ink-900 tabular-nums">
-                {totals.total.toLocaleString("en-US")}
-              </div>
+            <div className="text-sm font-bold text-ink-900 tabular-nums">
+              <span className="text-xs">&nbsp;\&nbsp;</span>
+              {totals.total.toLocaleString("en-US")}
             </div>
           </div>
           <div className="flex items-center gap-1">

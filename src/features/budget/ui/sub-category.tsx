@@ -9,7 +9,7 @@ import type {
 import { subTotals } from "@/features/budget/model/calc";
 import { ItemRow } from "@/features/budget/ui/item-row";
 import { EditableText } from "@/shared/ui/editable-text";
-import { PlusIcon } from "@/shared/ui/icons";
+import { ChevronDownIcon, PlusIcon } from "@/shared/ui/icons";
 import { useConfirm } from "@/shared/ui/modal";
 
 interface SubCategoryProps {
@@ -49,7 +49,7 @@ export const SubCategory = ({ major, sub }: SubCategoryProps) => {
           <summary className="list-none cursor-pointer">
             <div className="w-full flex items-center justify-between gap-2 bg-slate-50/80 px-2 py-2">
               <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                <span className="text-ink-300 chevron shrink-0">＞</span>
+                <ChevronDownIcon className="chevron text-ink-300 shrink-0" />
                 <EditableText
                   value={sub.name}
                   onChange={(name) => actions.renameSub(major.id, sub.id, name)}

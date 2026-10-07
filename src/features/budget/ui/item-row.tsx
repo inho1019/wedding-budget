@@ -43,28 +43,28 @@ export const ItemRow = ({
 
   return (
     <tr className="border-t border-slate-100 hover:bg-amber-50/40 transition-colors">
-      <td className="px-1 py-1.5 align-middle min-w-0 w-fit whitespace-normal break-words">
+      <td className="px-1 py-1.5 align-middle w-[30%] md:w-auto whitespace-normal break-words">
         <EditableText
           value={item.name}
           onChange={onRename}
-          className="text-left text-sm"
+          className="min-w-0 w-full text-left text-sm"
         />
       </td>
-      <td className="sr-only md:not-sr-only md:w-52 py-1 md:py-2 align-middle">
+      <td className="hidden md:table-cell md:w-52 py-1 md:py-2 align-middle">
         <RatioSlider
           total={item.couple + item.saved}
           ratio={item.split}
           onChange={(ratio) => onSetSplit(ratio)}
         />
       </td>
-      <td className="px-1 py-1 md:py-2 align-middle w-28 md:w-32 text-right">
+      <td className="px-1 py-1 md:py-2 align-middle md:w-32 text-right">
         <AmountInput
           value={item.saved}
           onChange={onSetSaved}
           className="text-xs md:text-sm"
         />
       </td>
-      <td className="px-1 py-1 md:py-2 align-middle w-28 text-right">
+      <td className="px-1 py-1 md:py-2 align-middle md:w-28 text-right">
         <AmountInput
           value={item.goal}
           onChange={onSetGoal}
@@ -72,7 +72,7 @@ export const ItemRow = ({
           className="text-xs md:text-sm"
         />
       </td>
-      <td className="px-1 py-0.5 md:py-1 align-middle w-3 text-right">
+      <td className="px-1 py-0.5 md:py-1 align-middle w-8 md:w-10 text-right">
         <button
           type="button"
           onClick={handleDelete}

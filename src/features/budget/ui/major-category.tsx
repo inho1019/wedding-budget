@@ -82,23 +82,25 @@ export const MajorCategory = ({ major }: MajorCategoryProps) => {
       </div>
 
       {/* 표 */}
-      <table className="w-full border-collapse">
+      <table className="w-full table-fixed md:table-auto border-collapse">
         <thead>
           <tr className="text-sm font-medium text-ink-300 border-b border-slate-100">
-            <th className="px-3 py-2 text-left font-medium min-w-0">항목</th>
-            <th className="sr-only md:not-sr-only py-2 md:w-52 text-left">
+            <th className="px-3 py-2 text-left font-medium w-[30%] md:w-auto">
+              항목
+            </th>
+            <th className="hidden md:table-cell py-2 md:w-52 text-left">
               <div className="flex items-center justify-between gap-2 text-sm font-medium">
                 <span>신랑</span>
                 <span>신부</span>
               </div>
             </th>
-            <th className="px-1 py-2 text-right text-sm font-medium w-32">
+            <th className="px-1 py-2 text-right text-sm font-medium md:w-32">
               모은 돈
             </th>
-            <th className="px-1 md:px-2 py-2 text-right text-sm font-medium w-28">
+            <th className="px-1 md:px-2 py-2 text-right text-sm font-medium md:w-28">
               목표액
             </th>
-            <th className="w-10" />
+            <th className="w-8 md:w-10" />
           </tr>
         </thead>
         <tbody>

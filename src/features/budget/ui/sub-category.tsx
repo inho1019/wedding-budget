@@ -94,7 +94,7 @@ export const SubCategory = ({ major, sub }: SubCategoryProps) => {
           </summary>
 
           {/* 하위 항목 + 구분 합계 (열리면 표시) */}
-          <table className="w-full border-collapse">
+          <table className="w-full table-fixed md:table-auto border-collapse">
             <tbody>
               {/* 세부 항목 행 */}
               {sub.items.map((item: Item) => (
@@ -113,17 +113,17 @@ export const SubCategory = ({ major, sub }: SubCategoryProps) => {
 
               {/* 구분 합계 행 */}
               <tr className="border-t border-slate-200 bg-slate-100">
-                <td className="px-3 py-2 align-middle min-w-0 max-w-[45%] whitespace-normal break-words text-sm font-medium text-ink-700">
+                <td className="px-3 py-2 align-middle w-[30%] md:w-auto whitespace-normal break-words text-sm font-medium text-ink-700">
                   합계
                 </td>
-                <td className="px-2 py-2" />
+                <td className="hidden md:table-cell px-2 py-2" />
                 <td className="px-2 py-2 text-right text-sm font-medium text-ink-500 tabular-nums">
                   {totals.saved.toLocaleString("en-US")}
                 </td>
                 <td className="px-2 py-2 text-right text-sm font-semibold text-ink-700 tabular-nums">
                   {totals.total.toLocaleString("en-US")}
                 </td>
-                <td className="px-2 py-2 w-10" />
+                <td className="px-2 py-2 w-8 md:w-10" />
               </tr>
             </tbody>
           </table>

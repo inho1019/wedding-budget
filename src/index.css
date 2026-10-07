@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-ink-900 antialiased;
+  font-family:
+    "Pretendard", "Sora", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+/* 숫자 입력란 - 엑셀처럼 깔끔하게 */
+.num-input {
+  @apply w-full bg-transparent text-right text-sm font-medium text-ink-900 outline-none
+    transition-colors duration-150 focus:bg-amber-50 focus:text-ink-900 rounded px-1 py-1;
+}
+
+.text-input {
+  @apply w-full bg-transparent text-sm font-medium text-ink-900 outline-none
+    transition-colors duration-150 focus:bg-amber-50 focus:text-ink-900 rounded px-2 py-1;
+}
+
+/* 예랑/예신 비율 슬라이더 */
+.ratio-slider {
+  @apply w-full h-1.5 rounded-full appearance-none cursor-pointer
+    bg-slate-200 accent-amber-500;
+}
+
+.ratio-slider::-webkit-slider-thumb {
+  @apply w-4 h-4 rounded-full bg-amber-500 border-2 border-white shadow-sm;
+}
+
+.ratio-slider::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-amber-500 border-2 border-white shadow-sm;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-1.5 text-sm font-medium
+    rounded-xl px-3 py-2 transition-all duration-150 active:scale-95 cursor-pointer;
+}
+
+.btn-ghost {
+  @apply btn text-ink-500 hover:bg-slate-100 hover:text-ink-900;
+}
+
+.btn-primary {
+  @apply btn bg-ink-900 text-white hover:bg-ink-700 shadow-sm shadow-ink-900/10;
+}
+
+.btn-amber {
+  @apply btn bg-amber-100 text-amber-800 hover:bg-amber-200;
+}
+
+.card {
+  @apply bg-white rounded-2xl border border-slate-200 shadow-sm shadow-slate-200/60;
+}
+
+/* <details>/<summary> 열고 닫기 섹션 */
+details.category-details {
+  toggle-action: none;
+}
+
+details.category-details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details.category-details > summary::-marker,
+details.category-details > summary::marker {
+  display: none;
+}
+
+details.category-details > summary .chevron {
+  transition: transform 200ms;
+}
+
+details.category-details[open] > summary .chevron {
+  transform: rotate(90deg);
+}

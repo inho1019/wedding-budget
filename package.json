@@ -1,0 +1,38 @@
+{
+  "name": "wedding-budget",
+  "version": "1.0.0",
+  "description": "결혼 예산표 - FSD + Zustand 앱",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "wedding",
+    "budget",
+    "react",
+    "vite",
+    "tailwind",
+    "zustand"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "html2pdf.js": "0.10.2",
+    "lz-string": "^1.5.0",
+    "postcss": "^8.5.29",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.19",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4",
+    "autoprefixer": "^10.6.1",
+    "typescript": "^5.9.3",
+    "vite": "^5"
+  }
+}
